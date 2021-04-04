@@ -27,8 +27,8 @@ public:
 
 	void swap(TimeFolder& other) noexcept;
 	
-	void add(std::unique_ptr<Card> c) override;
-
+	void add() override;
+	
 	void remove() override;
 
 	void print(std::ostream& os) const override;

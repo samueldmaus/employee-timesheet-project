@@ -27,6 +27,9 @@
     <ClInclude Include="TimeFolder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Department.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Employee.cpp">
@@ -39,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TimeFolder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Department.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

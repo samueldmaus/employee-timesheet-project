@@ -147,12 +147,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Department.h" />
     <ClInclude Include="Employee.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="TimeCard.h" />
     <ClInclude Include="TimeFolder.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Department.cpp" />
     <ClCompile Include="Employee.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="TimeCard.cpp" />

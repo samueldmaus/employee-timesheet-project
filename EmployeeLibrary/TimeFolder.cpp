@@ -32,9 +32,9 @@ void TimeFolder::swap(TimeFolder& other) noexcept
 	folder_.swap(other.folder_);
 }
 
-void TimeFolder::add(std::unique_ptr<Card> c)
+void TimeFolder::add()
 {
-	folder_.push_back(std::move(c));
+	folder_.push_back(std::move(current_card_));
 }
 
 void TimeFolder::remove()
@@ -46,7 +46,7 @@ void TimeFolder::print(std::ostream& os) const
 {
 	for(const auto& c : folder_)
 	{
-		os << *c;
+		os << *c << '\n';
 	}
 }
 
@@ -61,7 +61,7 @@ void TimeFolder::write()
 void TimeFolder::clockOut()
 {
 	current_card_->clockOut();
-	add(std::move(current_card_));
+	add();
 }
 
 void TimeFolder::printCurrentCard(std::ostream& os) const

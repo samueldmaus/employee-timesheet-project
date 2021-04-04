@@ -12,7 +12,7 @@ public:
 
 	virtual ~Folder() = default;
 
-	virtual void add(std::unique_ptr<Card> c) = 0;
+	virtual void add() = 0;
 
 	virtual void remove() = 0;
 
