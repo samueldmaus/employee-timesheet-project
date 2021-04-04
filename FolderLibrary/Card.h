@@ -7,7 +7,7 @@
 class Card
 {
 public:
-	Card(std::string t, std::string a);
+	Card(std::string title, std::string author);
 
 	virtual ~Card() = default;
 

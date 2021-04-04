@@ -1,21 +1,23 @@
 #ifndef EMPLOYEE_H
 #define EMPLOYEE_H
 
+#include "TimeFolder.h"
+
 #include <string>
 #include <ostream>
 
 class Employee
 {
 	public:
-    Employee(unsigned int i, std::string n, std::string e, std::string p);
+    Employee(unsigned int id, std::string name, std::string email, std::string password);
 
     Employee(const Employee& src) = delete;
 
+    Employee& operator=(Employee rhs) = delete;
+	
     Employee(Employee&& other) noexcept;
 
     ~Employee() = default;
-
-    Employee& operator=(Employee rhs);
 
     void swap(Employee& src) noexcept;
 
@@ -37,13 +39,12 @@ class Employee
 
 	void setAdmin();
 
-	/*
     void clockIn() const;
 
     void clockOut() const;
 
-    void viewTimeSheet() const;
-    */
+    void viewTimeSheet(std::ostream& os) const;
+
 private:
     friend std::ostream& operator<<(std::ostream& os, const Employee& src);
 
@@ -57,6 +58,7 @@ private:
 
 	bool admin_ = false;
 	
+	std::unique_ptr<TimeFolder> employee_folder_;
 };
 
 #endif

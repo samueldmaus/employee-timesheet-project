@@ -2,8 +2,6 @@
 #define FOLDER_H
 
 #include <memory>
-#include <string>
-#include <vector>
 #include <ostream>
 
 #include "Card.h"
@@ -11,38 +9,24 @@
 class Folder
 {
 public:
-	explicit Folder(std::string title);
-
-	Folder(const Folder& src) = delete;
-
-	Folder& operator=(Folder rhs) = delete;
-
-	Folder& operator=(Folder&& rhs) noexcept;
-
-	Folder(Folder&& src) noexcept;
 
 	virtual ~Folder() = default;
 
-	void swap(Folder& other) noexcept;
-	
-	[[nodiscard]] std::string getTitle() const;
+	virtual void add(std::unique_ptr<Card> c) = 0;
 
-	void setTitle(const std::string& t);
+	virtual void remove() = 0;
 
-	std::vector<std::unique_ptr<Card>>& getFolder();
+	virtual void print(std::ostream& os) const = 0;
 
-	void add(std::unique_ptr<Card> c);
+	virtual void write() = 0;
 
-	void remove();
-
-	void print(std::ostream& os) const;
-
-private:
-	friend std::ostream& operator<<(std::ostream& os, const Folder& src);
-	
-	std::string title_;
-
-	std::vector<std::unique_ptr<Card>> folder_;
+	virtual void flip() = 0;
 };
+
+inline std::ostream& operator<<(std::ostream& os, const Folder& src)
+{
+	src.print(os);
+	return os;
+}
 
 #endif

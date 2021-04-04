@@ -1,19 +1,13 @@
 #include "Employee.h"
 
-Employee::Employee(const unsigned int i, std::string n, std::string e, std::string p)
-        : id_(i), name_(std::move(n)), email_(std::move(e)), password_(std::move(p))
+Employee::Employee(const unsigned int id, std::string name, std::string email, std::string password)
+        : id_(id), name_(std::move(name)), email_(std::move(email)), password_(std::move(password)), employee_folder_(std::make_unique<TimeFolder>(name))
 {
 }
 
 Employee::Employee(Employee&& other) noexcept
         : id_(other.id_), name_(std::move(other.name_)), email_(std::move(other.email_)), password_(std::move(other.password_))
 {
-}
-
-Employee& Employee::operator=(Employee rhs)
-{
-    swap(rhs);
-    return *this;
 }
 
 void Employee::swap(Employee& src) noexcept
@@ -68,6 +62,21 @@ bool Employee::getAdmin() const
 void Employee::setAdmin()
 {
 	admin_ = !admin_;
+}
+
+void Employee::clockIn() const
+{
+    employee_folder_->write();
+}
+
+void Employee::clockOut() const
+{
+	employee_folder_->flip();
+}
+
+void Employee::viewTimeSheet(std::ostream& os) const
+{
+	employee_folder_->print(os);
 }
 
 std::ostream& operator<<(std::ostream& os, const Employee& src)

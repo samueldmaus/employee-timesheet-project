@@ -1,6 +1,6 @@
 #include "Card.h"
 
-Card::Card(std::string t, std::string a) : title_(std::move(t)), author_(std::move(a))
+Card::Card(std::string title, std::string author) : title_(std::move(title)), author_(std::move(author))
 {
 }
 

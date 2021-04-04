@@ -22,7 +22,7 @@ TEST(clockIn, TimeFolder)
 	ss << "Date: " << now_tm.tm_mon << "/" << now_tm.tm_mday << "/" << now_tm.tm_year << " -- Clock In: " << now_tm.tm_hour << ":" << now_tm.tm_min << ":" << now_tm.tm_sec << " -- Clock Out: " << now_tm.tm_hour << ":" << now_tm.tm_min << ":" << now_tm.tm_sec;
 
 	TimeFolder t("test");
-	t.clockIn("01/01/2021", "Sam Maus");
+	t.write();
 	std::stringstream os;
 	t.printCurrentCard(os);
 
@@ -34,12 +34,12 @@ TEST(clockOut, TimeFolder)
 	const auto time_point = std::chrono::system_clock::now();
 	const auto now_tm = TimeCard::makeTm(time_point);
 	TimeFolder t("test");
-	t.clockIn("01/01/2021", "Sam Maus");
+	t.write();
 	Sleep(2000);
-	t.clockOut();
+	t.flip();
 
 	std::stringstream ss;
-	ss <<  t.getFolder().size();
+	ss <<  t.size();
 
 	CHECK_EQUAL("1", ss.str());
 }
