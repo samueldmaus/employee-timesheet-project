@@ -4,7 +4,6 @@
 #include "TimeFolder.h"
 
 #include <string>
-#include <ostream>
 
 class Employee
 {
@@ -44,6 +43,8 @@ class Employee
     void clockOut() const;
 
     void viewTimeSheet(std::ostream& os) const;
+
+	[[nodiscard]] size_t size() const;
 
 private:
     friend std::ostream& operator<<(std::ostream& os, const Employee& src);

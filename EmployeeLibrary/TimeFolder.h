@@ -35,7 +35,7 @@ public:
 	
 	void write() override;
 
-	void flip() override;
+	void clockOut();
 
 	void printCurrentCard(std::ostream& os) const;
 

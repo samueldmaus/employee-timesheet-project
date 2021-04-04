@@ -20,7 +20,6 @@ public:
 
 	virtual void write() = 0;
 
-	virtual void flip() = 0;
 };
 
 inline std::ostream& operator<<(std::ostream& os, const Folder& src)

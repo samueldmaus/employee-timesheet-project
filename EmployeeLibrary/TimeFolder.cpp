@@ -58,7 +58,7 @@ void TimeFolder::write()
 	current_card_ = std::make_unique<TimeCard>(date.str(), getTitle());
 }
 
-void TimeFolder::flip()
+void TimeFolder::clockOut()
 {
 	current_card_->clockOut();
 	add(std::move(current_card_));

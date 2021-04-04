@@ -71,12 +71,17 @@ void Employee::clockIn() const
 
 void Employee::clockOut() const
 {
-	employee_folder_->flip();
+	employee_folder_->clockOut();
 }
 
 void Employee::viewTimeSheet(std::ostream& os) const
 {
 	employee_folder_->print(os);
+}
+
+size_t Employee::size() const
+{
+	return employee_folder_->size();
 }
 
 std::ostream& operator<<(std::ostream& os, const Employee& src)

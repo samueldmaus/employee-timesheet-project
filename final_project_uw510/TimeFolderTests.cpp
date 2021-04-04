@@ -36,7 +36,7 @@ TEST(clockOut, TimeFolder)
 	TimeFolder t("test");
 	t.write();
 	Sleep(2000);
-	t.flip();
+	t.clockOut();
 
 	std::stringstream ss;
 	ss <<  t.size();
