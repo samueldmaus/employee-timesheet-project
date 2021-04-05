@@ -39,7 +39,7 @@ void TimeFolder::add()
 
 void TimeFolder::remove()
 {
-	folder_.erase(folder_.end());
+	folder_.pop_back();
 }
 
 void TimeFolder::print(std::ostream& os) const

@@ -19,7 +19,7 @@ void Department::add()
 
 void Department::remove()
 {
-	employees_.erase(employees_.end());
+	employees_.pop_back();
 }
 
 void Department::print(std::ostream& os) const

@@ -12,11 +12,11 @@
 class Department : public Folder
 {
 public:
-	Department(std::string name);
+	explicit Department(std::string name);
 	
 	~Department() override = default;
 
-	const std::string& getName() const;
+	[[nodiscard]] const std::string& getName() const;
 
 	void add() override;
 
