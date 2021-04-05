@@ -39,3 +39,29 @@ TEST(clockInOut2, Employee)
 
 	CHECK_EQUAL(size, sam.size());
 }
+
+TEST(moveAssignment, Employee)
+{
+	Employee sam(1, "Sam", "sam@email.com", "password");
+	sam.clockIn();
+	sam.clockOut();
+	const auto new_sam = std::move(sam);
+
+	const size_t size = 1;
+	CHECK_EQUAL("Sam", new_sam.getName());
+	CHECK_EQUAL("sam@email.com", new_sam.getEmail());
+	CHECK_EQUAL(size, new_sam.size());
+}
+
+TEST(moveConstructor, Employee)
+{
+	Employee sam(1, "Sam", "sam@email.com", "password");
+	sam.clockIn();
+	sam.clockOut();
+	const auto new_sam(std::move(sam));
+	
+	const size_t size = 1;
+	CHECK_EQUAL("Sam", new_sam.getName());
+	CHECK_EQUAL("sam@email.com", new_sam.getEmail());
+	CHECK_EQUAL(size, new_sam.size());
+}

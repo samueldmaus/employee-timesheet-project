@@ -6,6 +6,18 @@ Manager::Manager(const unsigned int id, std::string name, std::string email, std
 	setAdmin();
 }
 
+Manager& Manager::operator=(Manager&& rhs) noexcept
+{
+	Employee::swap(rhs);
+	departments_.swap(rhs.departments_);
+	return *this;
+}
+
+Manager::Manager(Manager&& src) noexcept
+	: Employee(std::move(src)), departments_(std::move(src.departments_))
+{
+}
+
 std::shared_ptr<Department> Manager::getDepartment(const std::string& department)
 {
 	for(const auto& d : departments_)

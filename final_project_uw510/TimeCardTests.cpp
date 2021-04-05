@@ -47,6 +47,7 @@ TEST(clockOut, TimeCard)
 	Sleep(2000);
 	card.clockOut();
 
+	const std::tm addition {2};
 	const auto clock_out_tm = TimeCard::makeTm(card.getClockOut());
-	CHECK_EQUAL(now_tm.tm_sec + 2, clock_out_tm.tm_sec);
+	CHECK_EQUAL(now_tm.tm_sec + addition.tm_sec, clock_out_tm.tm_sec);
 }

@@ -13,7 +13,8 @@ Employee& Employee::operator=(Employee&& rhs) noexcept
 }
 
 Employee::Employee(Employee&& other) noexcept
-        : id_(other.id_), name_(std::move(other.name_)), email_(std::move(other.email_)), password_(std::move(other.password_))
+        : id_(other.id_), name_(std::move(other.name_)), email_(std::move(other.email_)),
+			password_(std::move(other.password_)), employee_folder_(std::move(other.employee_folder_))
 {
 }
 
@@ -23,6 +24,8 @@ void Employee::swap(Employee& src) noexcept
     std::swap(name_, src.name_);
     std::swap(email_, src.email_);
     std::swap(password_, src.password_);
+	std::swap(admin_, src.admin_);
+	std::swap(employee_folder_, src.employee_folder_);
 }
 
 // getters and setters

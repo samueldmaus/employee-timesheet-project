@@ -62,3 +62,26 @@ TEST(optOverload, Department)
 
 	CHECK_EQUAL("Samuel", account[0].getName());
 }
+
+TEST(moveAssignment, Department)
+{
+	Department sales("Sales");
+	sales.createEmployee(1, "Sam", "sam@email.com", "password");
+	sales.createEmployee(2, "Abby", "abby@email.com", "password");
+
+	const auto new_sales = std::move(sales);
+	const size_t size = 2;
+	CHECK_EQUAL("Sam", new_sales[0].getName());
+	CHECK_EQUAL(size, new_sales.size());
+}
+
+TEST(moveConstructor, Department)
+{
+	Department sales("Sales");
+	sales.createEmployee(1, "Sam", "sam@email.com", "password");
+	sales.createEmployee(2, "Abby", "abby@email.com", "password");
+
+	auto new_sales(std::move(sales));
+	const auto validate = new_sales.validateEmployee(0, new_sales.size(), "abby@email.com", "password");
+	CHECK(validate);
+}

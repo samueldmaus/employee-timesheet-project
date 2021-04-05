@@ -44,10 +44,24 @@ TEST(clockOut, TimeFolder)
 	CHECK_EQUAL("1", ss.str());
 }
 
-TEST(move, TimeFolder)
+TEST(moveAssignment, TimeFolder)
 {
 	TimeFolder t("test");
 	const auto t2 = std::move(t);
 
 	CHECK_EQUAL("test", t2.getTitle());
+}
+
+TEST(moveConstructor, TimeFolder)
+{
+	TimeFolder t("test");
+	t.clockIn();
+	t.clockOut();
+	auto t2(std::move(t));
+	t2.clockIn();
+	t2.clockOut();
+	
+	const size_t size = 2;
+	CHECK_EQUAL("test", t2.getTitle());
+	CHECK_EQUAL(size, t2.size());
 }
