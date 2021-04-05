@@ -51,3 +51,20 @@ TEST(clockOut, TimeCard)
 	const auto clock_out_tm = TimeCard::makeTm(card.getClockOut());
 	CHECK_EQUAL(now_tm.tm_sec + addition.tm_sec, clock_out_tm.tm_sec);
 }
+
+TEST(copyConstructor, TimeCard)
+{
+	const TimeCard card1("1/1/2000", "Sam Maus");
+	const auto card2(card1);
+
+	CHECK_EQUAL("1/1/2000", card2.getTitle());
+}
+
+TEST(moveConstructor, TimeCard)
+{
+	const TimeCard card1("1/1/2000", "Sam Maus");
+	const auto card2(std::move(card1));
+
+	CHECK_EQUAL("1/1/2000", card2.getTitle());
+	CHECK_EQUAL("Sam Maus", card2.getAuthor());
+}
