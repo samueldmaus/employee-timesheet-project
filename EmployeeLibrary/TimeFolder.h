@@ -33,7 +33,7 @@ public:
 
 	void print(std::ostream& os) const override;
 	
-	void write() override;
+	void clockIn();
 
 	void clockOut();
 

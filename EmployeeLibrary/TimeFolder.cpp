@@ -11,7 +11,7 @@ TimeFolder& TimeFolder::operator=(TimeFolder&& rhs) noexcept
 }
 
 TimeFolder::TimeFolder(TimeFolder&& src) noexcept
-	: current_card_(std::move(src.current_card_)), title_(std::move(src.title_)), folder_(std::move(std::vector<std::unique_ptr<Card>>()))
+	: current_card_(std::move(src.current_card_)), title_(std::move(src.title_)), folder_(std::move(src.folder_))
 {
 }
 
@@ -50,7 +50,7 @@ void TimeFolder::print(std::ostream& os) const
 	}
 }
 
-void TimeFolder::write()
+void TimeFolder::clockIn()
 {
 	const auto now = TimeFolder::getDate();
 	std::stringstream date;

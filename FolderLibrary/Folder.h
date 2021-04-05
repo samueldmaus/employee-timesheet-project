@@ -18,8 +18,6 @@ public:
 
 	virtual void print(std::ostream& os) const = 0;
 
-	virtual void write() = 0;
-
 	[[nodiscard]] virtual size_t size() const = 0;
 
 };

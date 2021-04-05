@@ -13,6 +13,8 @@ class Employee
     Employee(const Employee& src) = delete;
 
     Employee& operator=(Employee rhs) = delete;
+
+	Employee& operator=(Employee&& rhs) noexcept;
 	
     Employee(Employee&& other) noexcept;
 

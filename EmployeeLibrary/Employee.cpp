@@ -6,6 +6,12 @@ Employee::Employee(const unsigned int id, std::string name, std::string email, s
 {
 }
 
+Employee& Employee::operator=(Employee&& rhs) noexcept
+{
+    swap(rhs);
+	return *this;
+}
+
 Employee::Employee(Employee&& other) noexcept
         : id_(other.id_), name_(std::move(other.name_)), email_(std::move(other.email_)), password_(std::move(other.password_))
 {
@@ -67,7 +73,7 @@ void Employee::setAdmin()
 
 void Employee::clockIn() const
 {
-    employee_folder_->write();
+    employee_folder_->clockIn();
 }
 
 void Employee::clockOut() const

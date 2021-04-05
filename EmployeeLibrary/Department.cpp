@@ -7,6 +7,24 @@ Department::Department(std::string name)
 {
 }
 
+Department& Department::operator=(Department&& rhs) noexcept
+{
+    swap(rhs);
+	return *this;
+}
+
+Department::Department(Department&& rhs) noexcept
+    : name_(std::move(rhs.name_)), new_employee_(std::move(rhs.new_employee_)), employees_(std::move(rhs.employees_))
+{
+}
+
+void Department::swap(Department& other) noexcept
+{
+	name_.swap(other.name_);
+	new_employee_.swap(other.new_employee_);
+	employees_.swap(other.employees_);
+}
+
 const std::string& Department::getName() const
 {
     return name_;
@@ -37,11 +55,6 @@ void Department::print(std::ostream& os) const
 			os << *e << '\n';
 		}	
     }
-}
-
-void Department::write()
-{
-
 }
 
 void Department::sort()
@@ -84,4 +97,14 @@ void Department::createEmployee(unsigned int id, std::string name, std::string e
 {
 	new_employee_ = std::make_unique<Employee>(id, std::move(name), std::move(email), std::move(password));
 	add();
+}
+
+Employee& Department::operator[](const int i) const
+{
+	return *employees_[i];
+}
+
+Employee& Department::operator[](const int i)
+{
+    return *employees_[i];
 }
