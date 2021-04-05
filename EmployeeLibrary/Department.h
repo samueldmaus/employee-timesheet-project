@@ -16,6 +16,8 @@ public:
 	
 	~Department() override = default;
 
+	const std::string& getName() const;
+
 	void add() override;
 
 	void remove() override;
@@ -25,6 +27,8 @@ public:
 	void write() override;
 
 	void sort();
+
+	[[nodiscard]] size_t size() const override;
 
 	[[nodiscard]] bool validateEmployee(const unsigned int left, const unsigned int right, const std::string& email, const std::string& password);
 

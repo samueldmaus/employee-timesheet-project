@@ -7,6 +7,11 @@ Department::Department(std::string name)
 {
 }
 
+const std::string& Department::getName() const
+{
+    return name_;
+}
+
 void Department::add()
 {
 	employees_.push_back(std::move(new_employee_));
@@ -19,14 +24,24 @@ void Department::remove()
 
 void Department::print(std::ostream& os) const
 {
-	for(const auto& e : employees_)
+	if(size() == 1)
 	{
-		os << *e << '\n';
-	}
+		for(const auto& e : employees_)
+		{
+			os << *e;
+		}	
+	} else
+    {
+	    for(const auto& e : employees_)
+		{
+			os << *e << '\n';
+		}	
+    }
 }
 
 void Department::write()
 {
+
 }
 
 void Department::sort()
@@ -35,6 +50,11 @@ void Department::sort()
     {
         return a->getEmail() < b->getEmail();
     });
+}
+
+size_t Department::size() const
+{
+    return employees_.size();
 }
 
 bool Department::validateEmployee(const unsigned int left, const unsigned int right, const std::string& email, const std::string& password)
@@ -63,4 +83,5 @@ bool Department::validateEmployee(const unsigned int left, const unsigned int ri
 void Department::createEmployee(unsigned int id, std::string name, std::string email, std::string password)
 {
 	new_employee_ = std::make_unique<Employee>(id, std::move(name), std::move(email), std::move(password));
+	add();
 }

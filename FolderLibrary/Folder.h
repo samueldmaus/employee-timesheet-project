@@ -20,6 +20,8 @@ public:
 
 	virtual void write() = 0;
 
+	[[nodiscard]] virtual size_t size() const = 0;
+
 };
 
 inline std::ostream& operator<<(std::ostream& os, const Folder& src)

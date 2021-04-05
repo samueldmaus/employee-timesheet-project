@@ -25,3 +25,17 @@ TEST(clockInOut, Employee)
 
 	CHECK_EQUAL(size, sam.size());
 }
+
+TEST(clockInOut2, Employee)
+{
+	const Employee sam(1, "Sam", "sam@email.com", "password");
+	sam.clockIn();
+	sam.clockOut();
+
+	sam.clockIn();
+	sam.clockOut();
+
+	const size_t size = 2;
+
+	CHECK_EQUAL(size, sam.size());
+}

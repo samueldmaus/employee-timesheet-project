@@ -46,6 +46,8 @@ class Employee
 
 	[[nodiscard]] size_t size() const;
 
+	[[nodiscard]] bool signIn() const;
+
 private:
     friend std::ostream& operator<<(std::ostream& os, const Employee& src);
 

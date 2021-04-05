@@ -1,7 +1,8 @@
 #include "Employee.h"
 
 Employee::Employee(const unsigned int id, std::string name, std::string email, std::string password)
-        : id_(id), name_(std::move(name)), email_(std::move(email)), password_(std::move(password)), employee_folder_(std::make_unique<TimeFolder>(name))
+        : id_(id), name_(std::move(name)), email_(std::move(email)), password_(std::move(password)),
+			employee_folder_(std::make_unique<TimeFolder>(name))
 {
 }
 

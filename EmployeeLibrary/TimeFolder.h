@@ -23,7 +23,7 @@ public:
 
 	[[nodiscard]] std::string getTitle() const;
 
-	[[nodiscard]] size_t size() const;
+	[[nodiscard]] size_t size() const override;
 
 	void swap(TimeFolder& other) noexcept;
 	

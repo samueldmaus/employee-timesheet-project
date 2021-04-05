@@ -1,4 +1,5 @@
-﻿#include "Manager.h"
+﻿#include "Department.h"
+#include "Manager.h"
 #include "TestHarness.h"
 
 TEST(setter, Manager)
@@ -18,10 +19,24 @@ TEST(checkAdmin, Manager)
 
 TEST(clockInOut, Manager)
 {
-	const Employee sam(1, "Sam", "sam@email.com", "password");
+	const Manager sam(1, "Sam", "sam@email.com", "password");
 	sam.clockIn();
 	sam.clockOut();
 	const size_t size = 1;
 
 	CHECK_EQUAL(size, sam.size());
+}
+
+TEST(createEmployee, Manager)
+{
+	Manager sam(1, "Sam", "sam@email.com", "password");
+	sam.createDepartment("Accounting");
+	sam.addEmployee(2, "Sarah", "sarah@email.com", "password", "Accounting");
+	const auto department = sam.getDepartment("Accounting");
+	const size_t size = 1;
+	CHECK_EQUAL(size , department->size());
+
+	std::stringstream os;
+	department->print(os);
+	CHECK_EQUAL("Employee: 2, Sarah, sarah@email.com", os.str());
 }

@@ -1,16 +1,24 @@
 ﻿#ifndef MANAGER_H
 #define MANAGER_H
 
+#include "Department.h"
 #include "Employee.h"
 
 class Manager : public Employee
 {
 public:
-    Manager(unsigned int i, std::string n, std::string e, std::string p);
+    Manager(unsigned int id, std::string name, std::string email, std::string password);
 
-    void createEmployee(unsigned int i, std::string name, std::string email, std::string password) const;
+	std::shared_ptr<Department> getDepartment(const std::string& department);
 
-	// void addEmployee();
+	void addEmployee(unsigned int id, const std::string& name, const std::string& email, const std::string& password, const std::string& name_of_department) const;
+
+	void createDepartment(std::string name);
+
+	void addDepartment(Department& department);
+
+private:
+	std::vector<std::shared_ptr<Department>> departments_;
 };
 
 #endif

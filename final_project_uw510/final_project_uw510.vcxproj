@@ -150,6 +150,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DepartmentTests.cpp" />
     <ClCompile Include="EmployeeTests.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ManagerTests.cpp" />
