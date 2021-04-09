@@ -27,18 +27,22 @@ TEST(clockInOut, Manager)
 	CHECK_EQUAL(size, sam.size());
 }
 
-TEST(createEmployee, Manager)
+TEST(createEmployeeAndAddToDepartment, Manager)
 {
 	Manager sam(1, "Sam", "sam@email.com", "password");
 	sam.createDepartment("Accounting");
 	sam.addEmployee(2, "Sarah", "sarah@email.com", "password", "Accounting");
 	const auto department = sam.getDepartment("Accounting");
-	const size_t size = 1;
+	size_t size = 1;
+	CHECK_EQUAL(size, department->size());
+
+	sam.addEmployee(3, "Peter", "peter@email.com", "password", "Accounting");
+	size = 2;
 	CHECK_EQUAL(size, department->size());
 
 	std::stringstream os;
 	department->print(os);
-	CHECK_EQUAL("Employee: 2, Sarah, sarah@email.com", os.str());
+	CHECK_EQUAL("Employee: 2, Sarah, sarah@email.comEmployee: 3, Peter, peter@email.com", os.str());
 }
 
 TEST(moveAssignment, Manager)

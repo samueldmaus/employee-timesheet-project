@@ -50,6 +50,8 @@ class Employee
 
 	[[nodiscard]] bool signIn() const;
 
+	void signOut() const;
+
 private:
     friend std::ostream& operator<<(std::ostream& os, const Employee& src);
 

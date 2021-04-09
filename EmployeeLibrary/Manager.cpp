@@ -32,11 +32,11 @@ std::shared_ptr<Department> Manager::getDepartment(const std::string& department
 
 void Manager::addEmployee(const unsigned int id, const std::string& name, const std::string& email, const std::string& password, const std::string& name_of_department) const
 {
-	for(const auto& d : departments_)
+	for(const auto& dept : departments_)
 	{
-		if(d->getName() == name_of_department)
+		if(dept->getName() == name_of_department)
 		{
-			d->createEmployee(id, name, email, password);
+			dept->createEmployee(id, name, email, password);
 		}
 	}
 }

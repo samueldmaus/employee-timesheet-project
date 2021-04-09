@@ -42,19 +42,10 @@ void Department::remove()
 
 void Department::print(std::ostream& os) const
 {
-	if(size() == 1)
+	for(const auto& e : employees_)
 	{
-		for(const auto& e : employees_)
-		{
 			os << *e;
-		}	
-	} else
-    {
-	    for(const auto& e : employees_)
-		{
-			os << *e << '\n';
-		}	
-    }
+	}	
 }
 
 void Department::sort()
